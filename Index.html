@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Incubation with Creativity - Download Portal</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --primary-color: #00234C;
+            --secondary-color: #ffffff;
+            --accent-color: #00234C;
+            --bg-color: #f0f0f0;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --primary-color: #ffffff;
+            --secondary-color: #1a1a1a;
+            --accent-color: #00234C;
+            --bg-color: #121212;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --shadow-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--primary-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px var(--shadow-color);
+        }
+
+        .theme-toggle i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px var(--shadow-color);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .download-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class='bx bx-moon'></i>
+    </button>
+
+    <div class="hero">
+        <img src="Hero.png" alt="Hero Image">
+        <div class="hero-content">
+            <h1>Idea Incubation with Creativity</h1>
+            <p>Download Portal for In-class Workshop Materials</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <div class="card-image">
+                    <img src="16.png" alt="Matchsticks Mathematics">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Matchsticks Mathematics</h2>
+                    <p>Move a single line so that the false arithmetic statement below becomes true.</p>
+                    <a href="Math.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="17.png" alt="Solving Riddles">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Solving Riddles</h2>
+                    <p>Solve a riddle.</p>
+                    <a href="Riddles.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="18.png" alt="Creating Captions">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Creating Captions</h2>
+                    <p>In 1 minute, come up with 5 funny captions for this cartoon.</p>
+                    <a href="Captions.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="19.png" alt="Treating Tumors">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Treating Tumors</h2>
+                    <p>Understanding how creativity can be used to solve real problems.</p>
+                    <a href="Tumors.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="20.png" alt="Alternate Uses">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Alternate Uses</h2>
+                    <p>Brainstorm alternative uses for everyday objects.</p>
+                    <a href="Uses.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="21.png" alt="Incompleted Figures">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Incompleted Figures</h2>
+                    <p>Complete and interpret incomplete figure patterns.</p>
+                    <a href="Figures.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="22.png" alt="Connect 9">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Connect 9</h2>
+                    <p>Connect nine points with your creativity.</p>
+                    <a href="Connect.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="23.png" alt="Remote Association">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Remote Association</h2>
+                    <p>Associating things with creativity.</p>
+                    <a href="Asso.pdf" class="download-btn">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="Hero.png" alt="Remote Association">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">About Us</h2>
+                    <p>Learn more about us, the Center for Engineering Education Innovation.</p>
+                    <a href="https://e2i.hkust.edu.hk/" class="download-btn">Our Website</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#64ffda' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#64ffda',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // ScrollReveal Configuration
+        ScrollReveal().reveal('.card', {
+            delay: 200,
+            distance: '50px',
+            duration: 1000,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            interval: 200
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('bx-moon');
+                icon.classList.add('bx-sun');
+            } else {
+                icon.classList.remove('bx-sun');
+                icon.classList.add('bx-moon');
+            }
+        }
+    </script>
+</body>
+</html>
